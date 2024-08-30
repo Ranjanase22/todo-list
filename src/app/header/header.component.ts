@@ -29,7 +29,8 @@ export class HeaderComponent implements OnInit {
   newTodoTitle: string = '';
   newTodoDueDate: Date | null = null;
   todos: any[] = [];
-  errorMessage: string = '';
+  errorMessageTitle: string = '';
+  errorMessageDueDate: string = '';
   minDate: Date;
   showErrorTitle: boolean = false;
   showErrorDueDate: boolean = false;
@@ -45,13 +46,15 @@ export class HeaderComponent implements OnInit {
   addTodo(): void {
     this.showErrorTitle = false;
     this.showErrorDueDate = false;
+    this.errorMessageTitle = '';
+    this.errorMessageDueDate = '';
 
     if (!this.newTodoTitle.trim()) {
-      this.errorMessage = 'Task title is required.';
+      this.errorMessageTitle = 'Task title is required.';
       this.showErrorTitle = true;
     } 
     if (!this.newTodoDueDate) {
-      this.errorMessage = 'Due date is required.';
+      this.errorMessageDueDate = 'Due date is required.';
       this.showErrorDueDate = true;
     } 
     if (this.showErrorTitle || this.showErrorDueDate) {
@@ -63,7 +66,8 @@ export class HeaderComponent implements OnInit {
         todo.title.toLowerCase() === this.newTodoTitle.trim().toLowerCase()
     );
     if (duplicateTodo) {
-      this.errorMessage = 'This task already exists.';
+      this.errorMessageTitle = 'This task already exists.';
+      this.showErrorTitle = true;
       return;
     }
 
@@ -77,7 +81,8 @@ export class HeaderComponent implements OnInit {
     this.todos.push(newTodo);
     this.newTodoTitle = '';
     this.newTodoDueDate = null;
-    this.errorMessage = '';
+    this.errorMessageTitle = '';
+    this.errorMessageDueDate = '';
     this.saveTodos();
   }
 
