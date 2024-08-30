@@ -1,0 +1,8 @@
+.p-card .p-card-body {
+    margin-top: 12px;
+}
+
+.error-border .p-inputtext {
+    border-color: red !important;
+  }
+
