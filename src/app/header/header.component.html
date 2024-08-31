@@ -17,16 +17,18 @@
       <div class="todo-list">
         <h2>Open Tasks</h2>
         <div *ngFor="let todo of activeTodos">
-          <p-card>
-            <div class="task-item">
-              <p-checkbox [(ngModel)]="todo.completed" (change)="toggleTodoCompletion(todo)" binary="true"></p-checkbox>
-              <div>
-                <span class="task-details">{{ todo.title }} (Due: {{ todo.dueDate | date:'shortDate' }})</span>
+            <p-card>
+              <div class="task-item">
+                <p-checkbox [(ngModel)]="todo.completed" (change)="toggleTodoCompletion(todo)" binary="true"></p-checkbox>
+                <div class="task-details-container">
+                  <span class="task-title">{{ todo.title }}</span>
+                  <span class="task-due-date">Due: {{ todo.dueDate | date:'dd/MM/yyyy'}}</span>
+                </div>
                 <button pButton icon="pi pi-trash" class="delete-button" (click)="deleteTodo(todo)"></button>
               </div>
-            </div>
-          </p-card>
-        </div>
+            </p-card>
+          </div>
+          
       </div>
   
       <div class="todo-list">

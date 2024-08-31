@@ -30,10 +30,9 @@
   .add-button {
     margin-bottom: 16px;
     color: white;
-    border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 16px;
     transition: background-color 0.3s ease;
     margin-left: 16px;
   }
@@ -71,7 +70,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: cursive;
     font-size: 18px;
 }
 
@@ -100,6 +98,25 @@
     font-size: 10px; 
     margin-top: 4px;
   }
+
+  .task-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+  }
+  
+  .task-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+  
+  .task-due-date {
+    font-size: 14px;
+    color: #666;
+  }
+  
   
 
 
