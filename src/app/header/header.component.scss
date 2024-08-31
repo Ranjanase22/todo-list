@@ -28,7 +28,6 @@
   }
   
   .add-button {
-    padding: 16px;
     margin-bottom: 16px;
     color: white;
     border: none;
@@ -67,6 +66,21 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .task-item div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: cursive;
+    font-size: 18px;
+}
+
+.task-details {
+    flex-grow: 1;
+    text-align: center;
+    color: black;
+}
+
   
   .delete-button {
     margin-left: 10px;
@@ -87,4 +101,6 @@
     margin-top: 4px;
   }
   
- 
+
+
+
