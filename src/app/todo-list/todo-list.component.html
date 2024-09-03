@@ -1,0 +1,50 @@
+<div class="todo-container">
+    <h1 class="todo-heading">TODO-LIST</h1>
+  
+    <!-- Button to open the dialog -->
+    <button pButton label="Add Task" icon="pi pi-plus" class="add-button" (click)="openAddTodoDialog()"></button>
+  
+    <div class="todo-lists">
+      <div class="todo-list">
+        <h2 class="task-heading">Open Tasks</h2>
+        <div *ngIf="openTodos.length === 0" class="no-tasks">No open tasks</div>
+        <div *ngFor="let todo of openTodos" class="todo-card">
+          <p-card>
+            <div class="task-item">
+              <p-checkbox 
+                [(ngModel)]="todo.completed" 
+                (change)="toggleTodoCompletion(todo)" 
+                binary="true">
+              </p-checkbox>
+              <div class="task-details-container">
+                <span class="task-title">Task Name: {{ todo.title }}</span>
+                <span class="task-due-date">Due: {{ todo.dueDate | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <button pButton icon="pi pi-trash" class="delete-button" (click)="deleteTodo(todo)"></button>
+            </div>
+          </p-card>
+        </div>
+      </div>
+  
+      <div class="todo-list">
+        <h2 class="task-heading">Completed Tasks</h2>
+        <div *ngIf="completedTodos.length === 0" class="no-tasks">No completed tasks</div>
+        <div *ngFor="let todo of completedTodos" class="todo-card">
+          <p-card>
+            <div class="task-item">
+              <p-checkbox 
+                [(ngModel)]="todo.completed" 
+                (change)="toggleTodoCompletion(todo)" 
+                binary="true">
+              </p-checkbox>
+              <div class="task-details-container">
+                <span class="task-title">Task Name: {{ todo.title }}</span>
+                <span class="task-due-date">Due: {{ todo.dueDate | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <button pButton icon="pi pi-trash" class="delete-button" (click)="deleteTodo(todo)"></button>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>

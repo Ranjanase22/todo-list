@@ -1,0 +1,27 @@
+// /* Ensure the label stays at the top when input has a value or when focused */
+// .p-float-label input:not(:placeholder-shown) + label,
+// .p-float-label input:focus + label {
+//   top: -12px; 
+//   left: 0;
+//   font-size: 12px; 
+//   font-weight: bold;
+//   color: #707174; 
+//   padding: 0 4px; 
+//   transition: all 0.2s ease;
+// }
+
+// .p-float-label input[pInputText] {
+//   width: 100%;
+//   padding: 12px 0 8px; 
+//   box-sizing: border-box;
+// }
+
+// .p-float-label label {
+//   position: absolute;
+//   pointer-events: none;
+//   transition: all 0.2s ease;
+//   font-size: 12px; 
+//   color: #707174; 
+//   font-weight: bold;
+//   padding: 0 4px; 
+// }

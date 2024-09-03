@@ -6,9 +6,11 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DynamicDialogModule, DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.component';  // Import the new dialog component
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-todo-list',
   standalone: true,
   imports: [
     CommonModule,
@@ -19,11 +21,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CheckboxModule,
     FormsModule,
     ReactiveFormsModule,
+    DynamicDialogModule
   ],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  providers: [DialogService], // Required to inject DialogService
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class TodoListComponent implements OnInit {
   @ViewChild('newTodoInput') newTodoInput!: ElementRef;
 
   newTodoTitle: string = '';
@@ -35,12 +39,36 @@ export class HeaderComponent implements OnInit {
   showErrorTitle: boolean = false;
   showErrorDueDate: boolean = false;
 
-  constructor() {
+  ref: DynamicDialogRef | undefined;
+
+  constructor(public dialogService: DialogService) {
     this.minDate = new Date();
   }
 
   ngOnInit(): void {
     this.loadTodos();
+  }
+
+  openAddTodoDialog(): void {
+    this.ref = this.dialogService.open(AddTodoDialogComponent, {
+      header: 'Add New Task',
+      width: '400px',
+      contentStyle: { 'max-height': '400px', overflow: 'auto' },
+      baseZIndex: 10000,
+      data: {
+        newTodoTitle: this.newTodoTitle,
+        newTodoDueDate: this.newTodoDueDate,
+        minDate: this.minDate,
+      },
+    });
+
+    this.ref.onClose.subscribe((result: any) => {
+      if (result) {
+        this.newTodoTitle = result.newTodoTitle;
+        this.newTodoDueDate = result.newTodoDueDate;
+        this.addTodo();
+      }
+    });
   }
 
   addTodo(): void {
@@ -52,15 +80,15 @@ export class HeaderComponent implements OnInit {
     if (!this.newTodoTitle.trim()) {
       this.errorMessageTitle = 'Task title is required.';
       this.showErrorTitle = true;
-    } 
+    }
     if (!this.newTodoDueDate) {
       this.errorMessageDueDate = 'Due date is required.';
       this.showErrorDueDate = true;
-    } 
+    }
     if (this.showErrorTitle || this.showErrorDueDate) {
       return;
     }
-    
+
     const duplicateTodo = this.todos.find(
       (todo) =>
         todo.title.toLowerCase() === this.newTodoTitle.trim().toLowerCase()
@@ -111,16 +139,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  get activeTodos(): any[] {
+  get openTodos(): any[] {
     return this.todos.filter((todo) => !todo.completed);
   }
 
   get completedTodos(): any[] {
     return this.todos.filter((todo) => todo.completed);
-  }
-
-  focusAddTask(event: Event): void {
-    event.preventDefault();
-    this.newTodoInput.nativeElement.focus();
   }
 }
