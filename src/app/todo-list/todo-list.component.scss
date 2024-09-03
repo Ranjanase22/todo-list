@@ -1,45 +1,12 @@
-.todo-container {
+.todo-heading,.task-heading {
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .todo-container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
   }
-  
-  .input-container {
-    display: flex;
-    justify-content:space-between;
-    margin-left: 16px;
-    margin-right: 16px;
-    box-shadow: 20px 20px 50px 10px rgb(223, 223, 224) inset;
-    padding: 24px;
-  }
-  
-  .input {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 24px;
-    margin-right: 24px;
-  }
-  
-  .input:focus {
-    border-color: #3f4445;
-    background-color: #c5eaf3;
-    outline: none;
-  }
-  
-  .add-button {
-    margin-bottom: 16px;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    margin-left: 16px;
-  }
-  
-  
-
-  
   
   .todo-lists {
     display: flex;
@@ -51,8 +18,6 @@
   .todo-list {
     width: 45%;
     padding: 10px;
-    box-shadow: 20px 20px 50px 10px rgb(223, 223, 224) inset;
-    border-radius: 8px;
     margin-right: 24px;
   }
   
@@ -65,40 +30,28 @@
     align-items: center;
     justify-content: space-between;
   }
-
+  
   .task-item div {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-}
-
-.task-details {
+  }
+  
+  .task-details {
     flex-grow: 1;
     text-align: center;
     color: black;
-}
-
+  }
+  
   
   .delete-button {
     margin-left: 10px;
     color: red;
-    background-color:white;
+    background-color: white;
     border: none;
   }
   
-  
-  .error-border {
-    border: 1px solid red;
-  }
-  
-
-  .error {
-    color: red;
-    font-size: 10px; 
-    margin-top: 4px;
-  }
-
   .task-details-container {
     display: flex;
     flex-direction: column;
@@ -110,6 +63,7 @@
     font-weight: bold;
     margin-bottom: 4px;
     font-size: 16px;
+    color: #666;
   }
   
   .task-due-date {
@@ -117,7 +71,13 @@
     color: #666;
   }
   
+  .zero-state {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+  }
   
-
-
-
+  
+  
+  

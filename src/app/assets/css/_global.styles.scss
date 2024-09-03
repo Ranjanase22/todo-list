@@ -1,0 +1,40 @@
+.p-card .p-card-body {
+    margin-top: 16px;
+}
+
+
+.p-card {
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.p-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.p-calendar.custom-calendar {
+    width: 100%;
+}
+
+
+
+.p-button.p-button-danger {
+    background: none;
+    color: red;
+    border: none;
+}
+
+.p-button.p-button-success, .p-button-group.p-button-success > .p-button, .p-splitbutton.p-button-success > .p-button {
+    color: green;
+    background: none;
+    border: none;
+}
+
+.p-button {
+    border-radius: 0px;
+}

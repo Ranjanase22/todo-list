@@ -1,0 +1,53 @@
+<div class="dialog-container">
+    <h2 class="dialog-heading">Add New Task</h2>
+    
+    <div class="input-container">
+        <p-floatLabel>
+            <input
+              id="taskname"
+              class="task-name-input"
+              pInputText
+              type="text"
+              [(ngModel)]="newTodoTitle"
+              placeholder=" "
+              [ngClass]="{'error-border': showErrorTitle}"
+            />
+            <label for="taskname">Task Name</label>
+          </p-floatLabel>
+      <div *ngIf="showErrorTitle" class="error-message">
+        {{ errorMessageTitle }}
+      </div>
+  
+      <p-floatLabel>
+        <p-calendar
+          [styleClass]="'custom-calendar'"
+          [(ngModel)]="newTodoDueDate"
+          placeholder="Due date"
+          [showIcon]="true"
+          [minDate]="minDate"
+          appendTo="body"
+          [ngClass]="{'error-border': showErrorDueDate}"
+        />
+        <label for="calendar">Due Date</label>
+      </p-floatLabel>
+      <div *ngIf="showErrorDueDate" class="error-message">
+        {{ errorMessageDueDate }}
+      </div>
+  
+      <div class="dialog-footer">
+        <p-button
+          label="Cancel"
+          icon="pi pi-times"
+          (click)="cancel()"
+          severity="danger"
+        ></p-button>
+        <p-button
+          label="Add"
+          icon="pi pi-plus"
+          (click)="confirm()"
+          [styleClass]="'p-button-success'"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+  
